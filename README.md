@@ -1,36 +1,49 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# AURVI
 
-## Getting Started
-
-First, run the development server:
+A marketing site for a fictional small-batch candle brand, built as a design
+study. Visual language inspired by [misa.in](https://www.misa.in) — original
+brand, palette, typography, copy and structure.
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev     # http://localhost:3000
+npm run build   # production build
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Stack
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Next.js 16 (App Router) · TypeScript · Tailwind CSS v4 · `next/font` (Fraunces +
+Inter). No database, no API routes, no cart — every page is static apart from
+`/candles`, which reads its mood filter from the query string.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Layout
 
-## Learn More
+```
+app/        routes — /, /candles, /candles/[slug], /collections, /story, /contact
+components/ layout (header, footer, newsletter) · sections · ui primitives
+lib/        products, moods, filter logic, image helper
+docs/       the design spec this was built from
+```
 
-To learn more about Next.js, take a look at the following resources:
+## Where to change things
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+| Want to change | File |
+| --- | --- |
+| Colours, type scale, section rhythm | `app/globals.css` (`@theme` block) |
+| Products, prices, notes | `lib/products.ts` |
+| Mood names and copy | `lib/moods.ts` |
+| How the shop filter behaves | `lib/filter.ts` |
+| Homepage section order | `app/page.tsx` |
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Imagery
 
-## Deploy on Vercel
+Photos are pinned Unsplash CDN ids (not the deprecated random `source.unsplash`
+endpoint), so builds are reproducible. `lib/images.ts` builds the URLs and
+supplies a warm-sand blur placeholder. To use your own photography, drop files
+in `public/` and swap the `image` field on each product for a local path.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Note
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+AURVI is not a real company. Prices, addresses, the testimonial and the studio
+story are invented. The contact and newsletter forms validate input and then say
+so — nothing is transmitted or stored.

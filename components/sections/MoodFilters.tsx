@@ -5,8 +5,8 @@ import { PRODUCTS } from "@/lib/products";
 
 /**
  * Filter state lives in the URL, not in React state, so a filtered shop view is
- * shareable and survives a refresh — and the whole page stays a server
- * component. Each chip is a link that toggles its own mood in the query.
+ * shareable and survives a refresh. Each chip is a link that toggles its own
+ * mood in the query; CandleCatalogue reads it back in the browser.
  */
 export default function MoodFilters({ selected }: { selected: MoodId[] }) {
   const toggle = (mood: MoodId) =>

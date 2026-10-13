@@ -13,8 +13,9 @@ npm run build   # production build
 ## Stack
 
 Next.js 16 (App Router) · TypeScript · Tailwind CSS v4 · `next/font` (Fraunces +
-Inter). No database, no API routes, no cart — every page is static apart from
-`/candles`, which reads its mood filter from the query string.
+Inter). No database, no API routes, no cart. Built as a static export for
+GitHub Pages; `/candles` reads its mood filter from the query string in the
+browser.
 
 ## Layout
 
